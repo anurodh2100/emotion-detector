@@ -12,6 +12,9 @@ def emotion_detector_route():
 
     text_to_analyze = request.args.get('textToAnalyze')
 
+    if text_to_analyze == "":
+        return "Invalid text! Please try again!"
+
     response = emotion_detector(text_to_analyze)
 
     if response is None:
@@ -28,6 +31,7 @@ def emotion_detector_route():
     )
 
     return result
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
